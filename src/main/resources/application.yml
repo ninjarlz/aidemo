@@ -14,19 +14,16 @@ spring:
         format_sql: true
 
 langchain4j:
-
-#  Config for locally hosted Llama3 LLM AI model
-#  Please note that locally hosted LLMs does not work with @Tool annotations
-#  in the current langchain4j version - should be fixed in the future release
+#  Config for locally hosted Llama3 LLM AI model,
+#  Please note that locally hosted LLMs do not work with @Tool annotations
+#  in the current langchain4j version - should be fixed in the future release:
 #  ollama:
 #    chat-model:
 #      model-name: llama3
 #      temperature: 0.7
 #      base-url: http://localhost:11434
 #      format: json
-#
-
-# Config for cloud Open AI ChatGPT 3.5 LLM AI model
+# Config for cloud Open AI ChatGPT 3.5 LLM AI model:
   open-ai:
     chat-model:
       api-key: ${OPEN_AI_API_KEY}
