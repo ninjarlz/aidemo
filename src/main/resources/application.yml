@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: aidemo
+  datasource:
+    url: jdbc:h2:mem:testdb;DATABASE_TO_UPPER=false;MODE=MYSQL;
+    username: SA
+    password:
+  jpa:
+    show-sql: true
+    hibernate.ddl-auto: none
+    properties:
+      dialect: org.hibernate.dialect.MySQL8Dialect
+      hibernate:
+        format_sql: true
+
+langchain4j:
+
+#  Config for locally hosted Llama3 LLM AI model
+#  Please note that locally hosted LLMs does not work with @Tool annotations
+#  in the current langchain4j version - should be fixed in the future release
+#  ollama:
+#    chat-model:
+#      model-name: llama3
+#      temperature: 0.7
+#      base-url: http://localhost:11434
+#      format: json
+#
+
+# Config for cloud Open AI ChatGPT 3.5 LLM AI model
+  open-ai:
+    chat-model:
+      api-key: ${OPEN_AI_API_KEY}
+      model-name: gpt-3.5-turbo
+      temperature: 0.2
+      log-requests: true
+      log-responses: true
+      response-format: json_object
+
+logging:
+  level:
+    dev:
+      langchain4j: DEBUG
