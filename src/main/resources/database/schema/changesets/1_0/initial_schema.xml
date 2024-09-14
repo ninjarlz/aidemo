@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.9.xsd">
+
+    <changeSet author="Michal Kusmidrowicz" id="tank-table" >
+        <createTable tableName="tank">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="${STRING_MEDIUM}">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="mass_in_tonnes" type="float"/>
+            <column name="gun_caliber_in_millimeters" type="int"/>
+            <column name="front_armour_in_millimeters" type="int"/>
+            <column name="country_of_origin" type="${STRING_MEDIUM}"/>
+            <column name="type" type="${STRING_MEDIUM}"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

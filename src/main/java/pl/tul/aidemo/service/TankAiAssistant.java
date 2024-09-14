@@ -11,7 +11,7 @@ import pl.tul.aidemo.model.dto.TankSummaryDTO;
 @AiService
 public interface TankAiAssistant {
 
-    @UserMessage("Give me information about tank with name {{tankName}}. Do not execute tool.")
+    @UserMessage("Give me information about tank with name {{tankName}}. Do not execute any tool.")
     TankDTO describeTank(@V("tankName") String tankName);
 
     @UserMessage("Prepare concise and interesting summary about persisted tanks. " +
