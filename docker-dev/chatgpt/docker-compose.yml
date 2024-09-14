@@ -2,6 +2,7 @@ version: "3.2"
 services:
   db:
     image: postgres
+    container_name: db-aidemo-chatgpt
     ports:
       - "5432:5432"
     restart: always
