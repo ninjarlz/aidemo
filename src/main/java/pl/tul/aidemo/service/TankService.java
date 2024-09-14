@@ -1,6 +1,5 @@
 package pl.tul.aidemo.service;
 
-import dev.langchain4j.agent.tool.Tool;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.tul.aidemo.model.dto.TankDTO;
@@ -27,7 +26,6 @@ public class TankService {
         return mapTankEntity(tankRepository.save(entity));
     }
 
-    @Tool("Get data of persisted tanks for summary.")
     public List<TankDTO> getAllTanks() {
         return tankRepository.findAll()
                 .stream()
