@@ -6,6 +6,28 @@ Demo project for Langchain4j library and Spring Boot integration.
 
 Langchain4j is a Java library designed to facilitate the development of applications leveraging large language models (LLMs) and integrating natural language processing (NLP) capabilities. Inspired by the LangChain framework, which is popular in the Python ecosystem, Langchain4j aims to provide similar functionalities for the Java programming environment.
 
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+In order to properly build application one might need to install [Java 17](https://www.oracle.com/th/java/technologies/downloads/#java17) and/or [Docker](https://www.docker.com/get-started/).
+
+### Cloning
+
+```
+$ git clone https://github.com/ninjarlz/aidemo
+```
+
+### Building
+
+Using installation of Java 17 and built-in gradle wrapper:
+```
+$ ./gradlew build
+```
+Additionally, one can build & run application using provided [Dockerfile](Dockerfile).
+
 ## Configuration
 
 Contains configuration for:
@@ -107,3 +129,13 @@ In our example, LLM is able to fetch persisted tank data from database for perfo
 * To make LLM prepare short summary about the set of tanks persisted in database:
 `GET localhost:8080/tankInfo/summary`
 ![get-tankinfo-summary.png](readme_img/get-tankinfo-summary.png)
+
+## Built with
+* [Spring Boot](https://spring.io/projects/spring-boot) - The world’s leading Java web app creation platform
+* [Langchain4j](https://docs.langchain4j.dev) - A Java library designed to facilitate the development of applications leveraging large language models (LLMs) and integrating natural language processing (NLP) capabilities.
+
+## Developers
+* **Michał Kuśmidrowicz** - [ninjarlz](https://github.com/ninjarlz)
+
+## License
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
