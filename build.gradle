@@ -13,6 +13,12 @@ java {
 	}
 }
 
+ext {
+	liquibaseCoreVersion = '4.27.0'
+	langchain4jVersion = '0.35.0'
+	pgVersion = '42.7.3'
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
@@ -24,13 +30,13 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-	implementation 'dev.langchain4j:langchain4j-spring-boot-starter:0.34.0'
-	implementation 'dev.langchain4j:langchain4j-ollama-spring-boot-starter:0.34.0'
-	implementation 'dev.langchain4j:langchain4j-open-ai-spring-boot-starter:0.34.0'
-	implementation "org.postgresql:postgresql:42.7.3"
-	implementation "org.liquibase:liquibase-core:4.27.0"
+	implementation "org.springframework.boot:spring-boot-starter-web"
+	implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+	implementation "dev.langchain4j:langchain4j-spring-boot-starter:${langchain4jVersion}"
+	implementation "dev.langchain4j:langchain4j-ollama-spring-boot-starter:${langchain4jVersion}"
+	implementation "dev.langchain4j:langchain4j-open-ai-spring-boot-starter:${langchain4jVersion}"
+	implementation "org.postgresql:postgresql:${pgVersion}"
+	implementation "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
