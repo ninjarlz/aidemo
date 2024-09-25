@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   db:
-    image: postgres
+    image: postgres:12.20-alpine
     container_name: db-aidemo-chatgpt
     ports:
       - "5432:5432"
