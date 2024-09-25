@@ -1,7 +1,7 @@
 version: "3.2"
 services:
   db:
-    image: postgres
+    image: postgres:12.20-alpine
     container_name: db-aidemo-ollama
     ports:
       - "5432:5432"
@@ -17,7 +17,7 @@ services:
       timeout: 5s
       retries: 10
   ollama-server:
-    image: ollama/ollama:latest
+    image: ollama/ollama:0.3.12
     container_name: ollama-aidemo
     ports:
       - "11434:11434"
