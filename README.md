@@ -12,7 +12,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-In order to properly build application one might need to install [Java 17](https://www.oracle.com/th/java/technologies/downloads/#java17) and/or [Docker](https://www.docker.com/get-started/).
+To properly build an application one might need to install [Java 17](https://www.oracle.com/th/java/technologies/downloads/#java17) and/or [Docker](https://www.docker.com/get-started/).
 
 ### Cloning
 
@@ -22,7 +22,7 @@ $ git clone https://github.com/ninjarlz/aidemo
 
 ### Building
 
-Using installation of Java 17 and built-in gradle wrapper:
+Using the installation of Java 17 and built-in gradle wrapper:
 ```
 $ ./gradlew build
 ```
@@ -43,7 +43,7 @@ Contains configuration for:
           format: json
           timeout: 1200s
     ```
-  * one can use *docker-dev/ollama/docker-compose.yml* file to run required PostgreSQL database with locally hosted llama3 LLM.
+  * one can use [ollama/docker-compose.yml](docker-dev/ollama/docker-compose.yml) file to run the required PostgreSQL database with locally hosted llama3 LLM.
 
 * **cloud-based ChatGPT 3.5**:
   * *'chatgpt'* Spring profile defined in *application-chatgpt.yml* file:
@@ -59,8 +59,8 @@ Contains configuration for:
           response-format: json_object
           timeout: 1200s
     ```
-  * one can use *docker-dev/chatgpt/docker-compose.yml* file to run required PostgreSQL database.
-  * one has to provide own Open AI API key exposed as *OPEN_AI_API_KEY* environmental variable.
+  * one can use [chatgpt/docker-compose.yml](docker-dev/chatgpt/docker-compose.yml) file to run the required PostgreSQL database.
+  * one has to provide one's own Open AI API key exposed as *OPEN_AI_API_KEY* environmental variable.
 
 ## Implementation
 
@@ -107,26 +107,26 @@ public class TankTool {
     }
 }
 ```
-In our example, LLM is able to fetch persisted tank data from database for performing further analysis.
+In our example, LLM is able to fetch persisted tank data from the database for performing further analysis.
 
 ## Usage
 
 ### Scrapping & persisting information from LLM
 
-* To scrap new tank information from LLM and save data to database:
+* To scrap new tank information from LLM and save data to the database:
 `PUT localhost:8080/tankInfo?tankName=PzVI TigerII`
 ![put-tankinfo.png](readme_img/put-tankinfo.png)
 
 ### Fetching persisted data
-* To fetch scrapped data that were persisted in database:
+* To fetch scrapped data that were persisted in the database:
 `GET localhost:8080/tankInfo`
 ![get-tankinfo.png](readme_img/get-tankinfo.png)
 
 ### Analysis of persisted data
-* To make LLM select name of storm tanks from the set of tanks persisted in database:
+* To make LLM select the name of storm tanks from the set of tanks persisted in the database:
 `GET localhost:8080/tankInfo/stormTanks`
 ![get-tankinfo-stormtanks.png](readme_img/get-tankinfo-stormtanks.png)
-* To make LLM prepare short summary about the set of tanks persisted in database:
+* To make LLM prepare short summary about the set of tanks persisted in the database:
 `GET localhost:8080/tankInfo/summary`
 ![get-tankinfo-summary.png](readme_img/get-tankinfo-summary.png)
 
