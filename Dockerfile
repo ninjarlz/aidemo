@@ -9,4 +9,4 @@ ENV TZ="Europe/Warsaw"
 EXPOSE 8080
 COPY --from=build /home/gradle/src/build/libs/aidemo-0.0.1-SNAPSHOT.jar /usr/bin/aidemo/app.jar
 WORKDIR /usr/bin/aidemo
-CMD ["java", "--add-opens", "java.base/java.lang=ALL-UNNAMED", "-Dspring.profiles.active=ollama", "-jar", "./app.jar"]
+CMD ["java", "-Dspring.profiles.active=ollama,dev", "-jar", "./app.jar"]

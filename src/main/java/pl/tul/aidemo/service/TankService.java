@@ -1,9 +1,10 @@
 package pl.tul.aidemo.service;
 
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import pl.tul.aidemo.mapper.TankMapper;
 import pl.tul.aidemo.model.dto.TankDTO;
-import pl.tul.aidemo.model.entity.TankEntity;
 import pl.tul.aidemo.repository.TankRepository;
 
 import java.util.List;
@@ -13,45 +14,25 @@ import java.util.List;
 public class TankService {
 
     private final TankRepository tankRepository;
+    private final TankMapper tankMapper;
 
+    @Transactional(rollbackOn = Exception.class)
     public TankDTO saveTank(TankDTO tank) {
         var optionalEntity = tankRepository.findByName(tank.getName());
         if (optionalEntity.isPresent()) {
             var persistedEntity = optionalEntity.get();
-            var modifiedEntity = mapTankDTO(tank);
+            var modifiedEntity = tankMapper.tankDTOtoEntity(tank);
             modifiedEntity.setId(persistedEntity.getId());
-            return mapTankEntity(tankRepository.save(modifiedEntity));
+            return tankMapper.tankEntityToDTO(tankRepository.save(modifiedEntity));
         }
-        var entity = mapTankDTO(tank);
-        return mapTankEntity(tankRepository.save(entity));
+        var entity = tankMapper.tankDTOtoEntity(tank);
+        return tankMapper.tankEntityToDTO(tankRepository.save(entity));
     }
 
     public List<TankDTO> getAllTanks() {
         return tankRepository.findAll()
                 .stream()
-                .map(this::mapTankEntity)
+                .map(tankMapper::tankEntityToDTO)
                 .toList();
-    }
-
-    private TankEntity mapTankDTO(TankDTO tankDTO) {
-        return TankEntity.builder()
-                .countryOfOrigin(tankDTO.getCountryOfOrigin())
-                .gunCaliberInMillimeters(tankDTO.getGunCaliberInMillimeters())
-                .name(tankDTO.getName())
-                .massInTonnes(tankDTO.getMassInTonnes())
-                .type(tankDTO.getType())
-                .frontArmourInMillimeters(tankDTO.getFrontArmourInMillimeters())
-                .build();
-    }
-
-    private TankDTO mapTankEntity(TankEntity tankEntity) {
-        return TankDTO.builder()
-                .countryOfOrigin(tankEntity.getCountryOfOrigin())
-                .gunCaliberInMillimeters(tankEntity.getGunCaliberInMillimeters())
-                .name(tankEntity.getName())
-                .massInTonnes(tankEntity.getMassInTonnes())
-                .type(tankEntity.getType())
-                .frontArmourInMillimeters(tankEntity.getFrontArmourInMillimeters())
-                .build();
     }
 }

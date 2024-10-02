@@ -8,6 +8,8 @@ import pl.tul.aidemo.model.dto.TankDTO;
 import pl.tul.aidemo.model.dto.TankNameListDTO;
 import pl.tul.aidemo.model.dto.TankSummaryDTO;
 
+import java.util.List;
+
 @AiService
 public interface TankAiAssistant {
 

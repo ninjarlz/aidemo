@@ -4,5 +4,7 @@ langchain4j:
       model-name: llama3.1
       temperature: 0.2
       base-url: http://localhost:11434
+      log-requests: true
+      log-responses: true
       format: json
-      timeout: 1200s
+      timeout: 1200

@@ -1,14 +1,16 @@
-package pl.tul.aidemo.model.dto;
+package pl.tul.aidemo.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 @Builder
-public class TankSummaryDTO {
-    private String summary;
+public class TankNameListResponse {
+    private List<String> tankNames;
 }
