@@ -2,9 +2,9 @@ spring:
   application:
     name: aidemo
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/aidemo
-    username: postgres
-    password: postgres
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     show-sql: true
     hibernate.ddl-auto: none
@@ -14,7 +14,10 @@ spring:
         format_sql: true
   liquibase:
     change-log: classpath:database/schema/master.xml
+
 logging:
   level:
     dev:
-      langchain4j: DEBUG
+      langchain4j: ${LOG_LEVEL}
+    root: INFO
+    aidemo: ${LOG_LEVEL}

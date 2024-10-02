@@ -1,42 +1,54 @@
 package pl.tul.aidemo.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import pl.tul.aidemo.mapper.TankMapper;
 import pl.tul.aidemo.model.dto.TankDTO;
-import pl.tul.aidemo.model.dto.TankNameListDTO;
-import pl.tul.aidemo.model.dto.TankSummaryDTO;
+import pl.tul.aidemo.model.response.TankNameListResponse;
+import pl.tul.aidemo.model.response.TankResponse;
+import pl.tul.aidemo.model.response.TankSummaryResponse;
 import pl.tul.aidemo.service.TankAiAssistant;
 import pl.tul.aidemo.service.TankService;
 
 import java.util.List;
 
+import static pl.tul.aidemo.util.constant.ApiUrls.STORM_TANKS_URL;
+import static pl.tul.aidemo.util.constant.ApiUrls.SUMMARY_URL;
+import static pl.tul.aidemo.util.constant.ApiUrls.TANK_INFO_URL;
+
 @RestController
 @RequiredArgsConstructor
+@RequestMapping(TANK_INFO_URL)
 public class TankController {
 
-    private final String TANK_INFO_URL = "/tankInfo";
+
 
     private final TankAiAssistant tankAiAssistant;
     private final TankService tankService;
+    private final TankMapper tankMapper;
 
-    @PutMapping(TANK_INFO_URL)
-    public TankDTO saveTank(@RequestParam("tankName") String tankName) {
+    @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public TankResponse saveTank(@RequestParam String tankName) {
         TankDTO tankDTO = tankAiAssistant.describeTank(tankName);
-        return tankService.saveTank(tankDTO);
+        return tankMapper.tankDTOtoResponse(tankService.saveTank(tankDTO));
     }
 
-    @GetMapping(TANK_INFO_URL)
-    public List<TankDTO> getTanks() {
-        return tankService.getAllTanks();
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<TankResponse> getTanks() {
+        return tankService.getAllTanks()
+                .stream()
+                .map(tankMapper::tankDTOtoResponse)
+                .toList();
     }
 
-    @GetMapping(TANK_INFO_URL + "/stormTanks")
-    public TankNameListDTO identifyStormTanks() {
-        return tankAiAssistant.identifyStormTanks();
+    @GetMapping(value = STORM_TANKS_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+    public TankNameListResponse identifyStormTanks() {
+        return tankMapper.nameListDTOtoResponse(tankAiAssistant.identifyStormTanks());
     }
 
-    @GetMapping(TANK_INFO_URL + "/summary")
-    public TankSummaryDTO summarizeTanks() {
-        return tankAiAssistant.summarizeTanks();
+    @GetMapping(value = SUMMARY_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+    public TankSummaryResponse summarizeTanks() {
+        return tankMapper.summaryDTOtoResponse(tankAiAssistant.summarizeTanks());
     }
 }

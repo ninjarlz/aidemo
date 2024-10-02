@@ -14,9 +14,12 @@ java {
 }
 
 ext {
-	liquibaseCoreVersion = '4.27.0'
+	liquibaseCoreVersion = '4.29.0'
 	langchain4jVersion = '0.35.0'
 	pgVersion = '42.7.3'
+	mapStructVersion = '1.6.2'
+	logbookVersion = '3.9.0'
+	apacheCommonsVersion = '3.15.0'
 }
 
 configurations {
@@ -30,17 +33,34 @@ repositories {
 }
 
 dependencies {
+	// spring boot starters
 	implementation "org.springframework.boot:spring-boot-starter-web"
 	implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+
+	// langchain4j
 	implementation "dev.langchain4j:langchain4j-spring-boot-starter:${langchain4jVersion}"
 	implementation "dev.langchain4j:langchain4j-ollama-spring-boot-starter:${langchain4jVersion}"
 	implementation "dev.langchain4j:langchain4j-open-ai-spring-boot-starter:${langchain4jVersion}"
+
+	// implementation
 	implementation "org.postgresql:postgresql:${pgVersion}"
 	implementation "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
+	implementation "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
+	implementation "org.mapstruct:mapstruct:${mapStructVersion}"
+	implementation "org.apache.commons:commons-lang3:${apacheCommonsVersion}"
+	implementation "org.zalando:logbook-spring-boot-starter:${logbookVersion}"
+
+	// compile
 	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
+
+	// annotation
+	annotationProcessor "org.projectlombok:lombok"
+	annotationProcessor "org.mapstruct:mapstruct-processor:${mapStructVersion}"
+
+	// test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	testCompileOnly 'org.projectlombok:lombok'
 }
 
 tasks.named('test') {

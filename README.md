@@ -40,6 +40,8 @@ Contains configuration for:
           model-name: llama3.1
           temperature: 0.2
           base-url: http://localhost:11434
+          log-requests: true
+          log-responses: true
           format: json
           timeout: 1200s
     ```
@@ -73,7 +75,7 @@ to interact with the given LLM solution:
 @AiService
 public interface TankAiAssistant {
 
-    @UserMessage("Give me information about tank with name {{tankName}}. Do not execute tool.")
+    @UserMessage("Give me information about tank with name {{tankName}}. Do not execute any tool.")
     TankDTO describeTank(@V("tankName") String tankName);
 
     @UserMessage("Prepare concise and interesting summary about persisted tanks. " +

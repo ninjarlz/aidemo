@@ -1,4 +1,4 @@
-package pl.tul.aidemo.model.dto;
+package pl.tul.aidemo.model.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
-public class TankSummaryDTO {
+public class TankSummaryResponse {
     private String summary;
 }
