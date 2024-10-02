@@ -45,7 +45,6 @@ dependencies {
 	// implementation
 	implementation "org.postgresql:postgresql:${pgVersion}"
 	implementation "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
-	implementation "org.liquibase:liquibase-core:${liquibaseCoreVersion}"
 	implementation "org.mapstruct:mapstruct:${mapStructVersion}"
 	implementation "org.apache.commons:commons-lang3:${apacheCommonsVersion}"
 	implementation "org.zalando:logbook-spring-boot-starter:${logbookVersion}"
