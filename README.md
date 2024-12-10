@@ -134,7 +134,7 @@ In our example, LLM is able to fetch persisted tank data from the database for p
 
 ## Built with
 * [Spring Boot](https://spring.io/projects/spring-boot) - The world’s leading Java web app creation platform
-* [Langchain4j](https://docs.langchain4j.dev) - A Java library designed to facilitate the development of applications leveraging large language models (LLMs) and integrating natural language processing (NLP) capabilities.
+* [LangChain4j](https://docs.langchain4j.dev) - A Java library designed to facilitate the development of applications leveraging large language models (LLMs) and integrating natural language processing (NLP) capabilities.
 
 ## Developers
 * **Michał Kuśmidrowicz** - [ninjarlz](https://github.com/ninjarlz)
