@@ -2,9 +2,9 @@
 
 ## Description
 
-Demo project for Langchain4j library and Spring Boot integration.
+Demo project for LangChain4j library and Spring Boot integration.
 
-Langchain4j is a Java library designed to facilitate the development of applications leveraging large language models (LLMs) and integrating natural language processing (NLP) capabilities. Inspired by the LangChain framework, which is popular in the Python ecosystem, Langchain4j aims to provide similar functionalities for the Java programming environment.
+LangChain4j is a Java library designed to facilitate the development of applications leveraging large language models (LLMs) and integrating natural language processing (NLP) capabilities. Inspired by the LangChain framework, which is popular in the Python ecosystem, LangChain4j aims to provide similar functionalities for the Java programming environment.
 
 ## Getting Started
 
