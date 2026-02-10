@@ -5,15 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 /**
- * Mutable DTO for langchain4j AI deserialization of tank name lists.
+ * Mutable DTO for langchain4j AI deserialization of tank summaries.
  */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TankNameListAiDto {
-    private List<String> tankNames;
+public class TankSummaryAiDTO {
+    private String summary;
 }

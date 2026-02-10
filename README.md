@@ -76,16 +76,16 @@ to interact with the given LLM solution:
 public interface TankAiAssistant {
 
     @UserMessage("Give me information about tank with name {{tankName}}. Do not execute any tool.")
-    TankAiDto describeTank(@V("tankName") String tankName);
+    TankAiDTO describeTank(@V("tankName") String tankName);
 
     @UserMessage("Prepare concise and interesting summary about persisted tanks. " +
             "Summary should cover different aspects of tanks.")
-    TankSummaryAiDto summarizeTanks();
+    TankSummaryAiDTO summarizeTanks();
 
     @UserMessage("Identify names of best tanks for participating in storm (or front attack on densely defended positions) " +
             "within set of persisted tanks.")
     @SystemMessage("Storm tanks are characterized by huge gun and thick front armour.")
-    TankNameListAiDto identifyStormTanks();
+    TankNameListAiDTO identifyStormTanks();
 }
 ```
 
