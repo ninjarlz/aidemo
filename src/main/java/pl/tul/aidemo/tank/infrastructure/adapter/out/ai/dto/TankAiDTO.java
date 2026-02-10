@@ -15,7 +15,7 @@ import pl.tul.aidemo.tank.domain.model.TankType;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class TankAiDto {
+public class TankAiDTO {
     private String name;
     private float massInTonnes;
     private int gunCaliberInMillimeters;

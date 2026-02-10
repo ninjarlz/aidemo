@@ -76,16 +76,16 @@ to interact with the given LLM solution:
 public interface TankAiAssistant {
 
     @UserMessage("Give me information about tank with name {{tankName}}. Do not execute any tool.")
-    TankDTO describeTank(@V("tankName") String tankName);
+    TankAiDTO describeTank(@V("tankName") String tankName);
 
     @UserMessage("Prepare concise and interesting summary about persisted tanks. " +
             "Summary should cover different aspects of tanks.")
-    TankSummaryDTO summarizeTanks();
+    TankSummaryAiDTO summarizeTanks();
 
     @UserMessage("Identify names of best tanks for participating in storm (or front attack on densely defended positions) " +
             "within set of persisted tanks.")
     @SystemMessage("Storm tanks are characterized by huge gun and thick front armour.")
-    TankNameListDTO identifyStormTanks();
+    TankNameListAiDTO identifyStormTanks();
 }
 ```
 
@@ -101,11 +101,11 @@ It is possible to allow LLM to execute Java code using `@Tool` annotation.
 @RequiredArgsConstructor
 public class TankTool {
 
-    private final TankService tankService;
+    private final TankPersistencePort persistencePort;
 
     @Tool("Get data of persisted tanks for summary and analysis.")
-    public List<TankDTO> getPersistedTanksData() {
-        return tankService.getAllTanks();
+    public List<Tank> getPersistedTanksData() {
+        return persistencePort.findAll();
     }
 }
 ```
